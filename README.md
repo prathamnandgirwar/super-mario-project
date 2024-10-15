@@ -77,18 +77,19 @@ kubectl version --client
 ````
 ### $\color{red} \textbf {Step 3 → IAM  Role  for  EC2}$
 create role:
-![role](https://github.com/abhipraydhoble/Project-Super-Mario/assets/122669982/31a05c18-f34b-430d-b5cb-c5873ae6e9c5)
+![image](https://github.com/user-attachments/assets/5c4906c1-e350-4217-84f1-a1804f5f6dc0)
 
 ### $\color{red} \textbf {Step 4 →Attach  IAM  role  with your  EC2 }$
 go to EC2 
 click on actions → security → modify IAM role option
 - administrator access
 - eks
-![image](https://github.com/user-attachments/assets/c23f9d00-505d-4a0d-b07d-c6b21d419748)
+- ![image](https://github.com/user-attachments/assets/9c0b0e0d-e10d-41de-9082-d5fc892507c1)
+- 
+![image](https://github.com/user-attachments/assets/32493103-3fdc-476e-88fe-884368755013)
 
-![role-ec2](https://github.com/abhipraydhoble/Project-Super-Mario/assets/122669982/70cc0ebb-6063-4c4b-98df-7259a08749b8)
+![image](https://github.com/user-attachments/assets/26bbd3cd-afdd-4f88-b389-552c7988d089)
 
-![modify-role](https://github.com/abhipraydhoble/Project-Super-Mario/assets/122669982/3e998e21-3654-43b0-8df0-496f009ef0a6)
 
 ### $\color{red} \textbf {Step 5 → Building Infrastructure  Using  kubernetes}$
 $\color{blue} \textbf {Install  GIT}$
@@ -100,6 +101,8 @@ cd Project-Super-Mario
 cd EKS-TF
 vim backend.tf
 ````
+![image](https://github.com/user-attachments/assets/b8c28652-cc33-4d60-8cf6-ed1ae7002807)
+
 ![backend tf](https://github.com/abhipraydhoble/Project-Super-Mario/assets/122669982/6b9e648f-2f13-41e8-a66b-6b6e6e0a63de)
 
 $\color{blue} \textbf {Create \ Infra:}$ install eksctl 
@@ -125,6 +128,8 @@ or
 ````
 aws eks update-kubeconfig --name EKS_CLOUD --profile eks
 ````
+![image](https://github.com/user-attachments/assets/acedc26f-f4c4-4c11-b4b1-d452ab253e54)
+
 
 ### $\color{red} \textbf {Step 6 → Creation  of  deployment  and service  for  EKS}$
 change the directory where deployment and service files are stored use the command →
