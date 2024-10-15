@@ -3,7 +3,7 @@
 ##  $\color{blue} \textbf {Project  Workflow}$
 Step 1 → Login and basics setup
 
-Step 2 → Setup Docker  ,aws cli , and Kubectl
+Step 2 → Setup Docker  ,aws cli ,eksctl and Kubectl
 
 Step 3 → IAM Role for EC2
 
