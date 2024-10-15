@@ -3,13 +3,13 @@
 ##  $\color{blue} \textbf {Project  Workflow}$
 Step 1 → Login and basics setup
 
-Step 2 → Setup Docker ,Terraform ,aws cli , and Kubectl
+Step 2 → Setup Docker  ,aws cli , and Kubectl
 
 Step 3 → IAM Role for EC2
 
 Step 4 →Attach IAM role with your EC2
 
-Step 5 → Building Infrastructure Using terraform
+Step 5 → Building Infrastructure Using kubernetes
 
 Step 6 → Creation of deployment and service for EKS
 
@@ -36,27 +36,6 @@ sudo systemctl start docker
 sudo usermod -aG docker ubuntu
 newgrp docker
 docker --version
-````
-$\color{blue} \textbf {Setup Terraform:}$
-````
-sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
-
-wget -O- https://apt.releases.hashicorp.com/gpg | \
-gpg --dearmor | \
-sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
-
-gpg --no-default-keyring \
---keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
---fingerprint
-
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
-https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
-sudo tee /etc/apt/sources.list.d/hashicorp.list
-
-sudo apt update
-sudo apt-get install terraform
-terraform --version
-
 ````
 ${\color{blue} \textbf {Setup  AWS CLI:}}$
 ````
@@ -110,9 +89,10 @@ click on actions → security → modify IAM role option
 
 ![modify-role](https://github.com/abhipraydhoble/Project-Super-Mario/assets/122669982/3e998e21-3654-43b0-8df0-496f009ef0a6)
 
-### $\color{red} \textbf {Step 5 → Building Infrastructure  Using  terraform}$
+### $\color{red} \textbf {Step 5 → Building Infrastructure  Using  kubernetes}$
 $\color{blue} \textbf {Install  GIT}$
 ````
+Aws configure --profile eks
 sudo apt install git -y
 git clone https://github.com/abhipraydhoble/Project-Super-Mario.git
 cd Project-Super-Mario
@@ -121,12 +101,24 @@ vim backend.tf
 ````
 ![backend tf](https://github.com/abhipraydhoble/Project-Super-Mario/assets/122669982/6b9e648f-2f13-41e8-a66b-6b6e6e0a63de)
 
-$\color{blue} \textbf {Create \ Infra:}$
+$\color{blue} \textbf {Create \ Infra:}$ install eksctl 
 ````
-terraform init
-terraform plan
-terraform apply --auto-approve
-aws eks update-kubeconfig --name EKS_CLOUD --region ap-southeast-1
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_Linux_amd64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/eksctl /usr/local/bin
+sudo chmod +x /usr/local/bin/eksctl
+eksctl version
+eksctl create cluster \
+  --name eks-cloud \
+  --region ap-south-1 \
+  --nodegroup-name my-nodes \
+  --node-type t3.medium \
+  --nodes 1 \
+  --nodes-min 1 \
+  --nodes-max 2 \
+  --managed
+
+
+aws eks update-kubeconfig --name EKS_CLOUD --region ap-south-1
 ````
 or
 ````
