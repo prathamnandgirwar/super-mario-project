@@ -154,7 +154,7 @@ copy the load balancer ingress and paste it on browser and your game is running
 
 $\color{green} \textbf {Final Output: Enjoy The Game 🎮}$
 
-![output](https://github.com/abhipraydhoble/Project-Super-Mario/assets/122669982/edfff0b5-6507-48e4-b552-908671b59920)
+![image](https://github.com/user-attachments/assets/987361f7-2eaf-4a95-90e2-3c590c9837aa)
 
 **Delete Infra**
 ````
